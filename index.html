@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Virtual Posters</title>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+        
+        <script src="highlight.js"></script>
+        <script src="poster.js"></script>
+        <script src="infoBanner.js"></script>
+    </head>
+
+    <body>
+        <a-scene id="main-scene">
+            <a-sky id="main-container" radius="5000" color="#c1d2e6"></a-sky>
+
+            <!--Ground-->
+            <a-plane
+                id="ground"
+                color="#78909c"
+                width="200"
+                height="100"
+                position="0 -15 0"
+                rotation="-90 0 0"
+            ></a-plane>
+
+            <!--Posters Container-->
+            <a-entity id="posters-container" cursor-listener manga></a-entity>
+
+            <!--Faded Background-->
+            <a-entity
+                id="fadeBackground"
+                geometry="primitive: sphere; radius: 2.5"
+                material="color: black; side: back; shader: flat; transparent: true; opacity: 0.6"
+                visible="false"
+                cursor-listener
+                info-banner
+            ></a-entity>
+            <!--Camera-->
+            <a-camera id="camera" wasd-controls="enabled: false;">
+                <!--App Title-->
+                <a-entity
+                    id="app-title"
+                    position="0 0.73 -1"
+                    text="font: exo2bold; align: center; width: 2; color: #000; value: Visit the Manga World!"
+                >
+                    <a-entity
+                        id="app-subtitle"
+                        position="0 -0.1 0"
+                        text="font: dejavu; align: center; width: 1; color: #3c3b3d; value: Find your favorite manga :)"
+                    ></a-entity>
+                </a-entity>
+
+                <!--Cursor-->
+                <a-entity
+                    id="camera-cursor"
+                    cursor
+                    position="0 0 -1"
+                    geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                    material="color: #fff; shader: flat"
+                ></a-entity>
+
+            </a-camera>
+        </a-scene>
+    </body>
+</html>
